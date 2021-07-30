@@ -1,12 +1,5 @@
-$.ajax({
-    url: "stats.csv",
-    async: false,
-    success: function (csvd) {
-        data = $.csv.toArrays(csvd);
-    },
-    dataType: "text",
-    complete: function () {
-        // call a function on complete 
+window.onload = async function(){
+    d3.csv("https://raw.githubusercontent.com/julioguzman19/DataVisualization/main/stats.csv", function(data){
         console.log(data);
-    }
-});
+    });
+}
