@@ -14,7 +14,7 @@ let dataObj = { headersArr, namesArr, ppgArr, rpgArr, apgArr, spgArr, bpgArr, to
 let i = 0;
 
 window.onload = async function () {
-    d3.csv("https://raw.githubusercontent.com/julioguzman19/DataVisualization/main/stats.csv", function (data) {
+    d3.csv("https://raw.githubusercontent.com/julioguzman19/DataVisualization/main/statsDelete.csv", function (data) {
 
         // Data being read one row at a time
         globalData[i] = data;
@@ -45,7 +45,7 @@ function printData() {
             "translate(" + margin.left + "," + margin.top + ")");
 
     // sort data
-    dataObj.ppgArr.sort(function (b, a) {
+    globalData.sort(function (b, a) {
         return a - b;
     });
 
@@ -82,7 +82,7 @@ function printData() {
 
     // Circles
     svg.selectAll("mycircle")
-        .data(dataObj.ppgArr)
+        .data(globalData)
         .enter()
         .append("circle")
         .attr("cx", function (d) { return x(d.PPG); })
