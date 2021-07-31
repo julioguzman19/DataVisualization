@@ -8,7 +8,7 @@ let apgArr = [];
 let spgArr = [];
 let bpgArr = [];
 let topgArr = [];
-let dataObj = { headersArr, namesArr, ppgArr, rpgArr, apgArr, spgArr, bpgArr, topgArr };
+let dataObj = [];
 
 // Initializing iterations for window on load
 let i = 0;
@@ -27,7 +27,7 @@ window.onload = async function () {
 
 function printData() {
     createArrays();
-    console.log(dataObj.namesArr[0]);
+    //console.log(dataObj.namesArr[0]);
 
     //
     // set the dimensions and margins of the graph
@@ -45,9 +45,11 @@ function printData() {
             "translate(" + margin.left + "," + margin.top + ")");
 
     // sort data
-    globalData.sort(function (b, a) {
-        return a - b;
+    dataObj.sort(function (b, a) {
+        return a.rpg - b.rpg;
     });
+
+    console.log(dataObj);
 
     // Add X axis
     var x = d3.scaleLinear()
@@ -96,6 +98,8 @@ function printData() {
 }
 
 function createArrays() {
+    let name,ppg,rpg,apg,spg,bpg,topg;
+
     for (let i = 0; i < globalData.length; i++) {
         //Pushing csv column data into arrays
         namesArr.push(globalData[i].NAME);
@@ -105,5 +109,19 @@ function createArrays() {
         spgArr.push(globalData[i].SPG);
         bpgArr.push(globalData[i].BPG);
         topgArr.push(globalData[i].TOPG);
+
+        // Creating temp vars
+        name = globalData[i].NAME;
+        ppg = globalData[i].PPG;
+        rpg = globalData[i].RPG;
+        apg = globalData[i].APG;
+        spg = globalData[i].SPG;
+        bpg = globalData[i].BPG;
+        topg = globalData[i].TOPG; 
+
+        // Adding temp vars to objects
+        dataObj[i] = {name:name,ppg:ppg,rpg:rpg,apg:apg,spg:spg,bpg,bpg,topg:topg};
+
     }
+    
 }
