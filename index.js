@@ -1,6 +1,16 @@
-
-let names = []; 
+// Initializing Global Arrays to store data
 let globalData = [];
+let headersArr = ["NAME", "TEAM", "PPG","RPG", "APG","SPG","BPG","TOPG"];
+let namesArr = []; 
+let ppgArr = [];
+let rpgArr = [];
+let apgArr = [];
+let spgArr = [];
+let bpgArr = [];
+let topgArr = [];
+let dataObj = {headersArr,namesArr,ppgArr,rpgArr,apgArr,spgArr,bpgArr,topgArr};
+
+// Initializing iterations for window on load
 let i = 0;
 
 window.onload = async function(){
@@ -15,13 +25,19 @@ window.onload = async function(){
 }
 
 function printData(){
-    createNamesArray();
-    //console.log(names[0]);
+    createArrays();
+    console.log(dataObj.namesArr[0]);
 }
 
-function createNamesArray(){
+function createArrays(){
     for(let i = 0; i < globalData.length; i++){
-        //console.log(globalData[i].NAME);
-        names.push(globalData[i].NAME);
-    }
+        //Pushing csv column data into arrays
+        namesArr.push(globalData[i].NAME);
+        ppgArr.push(globalData[i].PPG);
+        rpgArr.push(globalData[i].RPG);
+        apgArr.push(globalData[i].APG);
+        spgArr.push(globalData[i].SPG);
+        bpgArr.push(globalData[i].BPG);
+        topgArr.push(globalData[i].TOPG);  
+       }
 }
