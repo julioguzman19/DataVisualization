@@ -1,13 +1,13 @@
 // Initializing Global Arrays to store data
 let globalData = [];
-let headersArr = ["NAME", "TEAM", "PPG", "RPG", "APG", "SPG", "BPG", "TOPG"];
-let namesArr = [];
-let ppgArr = [];
-let rpgArr = [];
-let apgArr = [];
-let spgArr = [];
-let bpgArr = [];
-let topgArr = [];
+// let headersArr = ["NAME", "TEAM", "PPG", "RPG", "APG", "SPG", "BPG", "TOPG"];
+// let namesArr = [];
+// let ppgArr = [];
+// let rpgArr = [];
+// let apgArr = [];
+// let spgArr = [];
+// let bpgArr = [];
+// let topgArr = [];
 let dataObj = [];
 
 // Initializing iterations for window on load
@@ -46,10 +46,9 @@ function printData() {
 
     // sort data
     dataObj.sort(function (b, a) {
-        return a.rpg - b.rpg;
+        return a.apg - b.apg;
     });
 
-    console.log(dataObj);
 
     // Add X axis
     var x = d3.scaleLinear()
@@ -66,29 +65,29 @@ function printData() {
     // Y axis
     var y = d3.scaleBand()
         .range([0, height])
-        .domain(globalData.map(function (d) { return d.NAME; }))
+        .domain(dataObj.map(function (d) { return d.name; }))
         .padding(1);
     svg.append("g")
         .call(d3.axisLeft(y))
 
     // Lines
     svg.selectAll("myline")
-        .data(globalData)
+        .data(dataObj)
         .enter()
         .append("line")
-        .attr("x1", function (d) { return x(d.PPG); })
+        .attr("x1", function (d) { return x(d.apg); })
         .attr("x2", x(0))
-        .attr("y1", function (d) { return y(d.NAME); })
-        .attr("y2", function (d) { return y(d.NAME); })
+        .attr("y1", function (d) { return y(d.name); })
+        .attr("y2", function (d) { return y(d.name); })
         .attr("stroke", "grey")
 
     // Circles
     svg.selectAll("mycircle")
-        .data(globalData)
+        .data(dataObj)
         .enter()
         .append("circle")
-        .attr("cx", function (d) { return x(d.PPG); })
-        .attr("cy", function (d) { return y(d.NAME); })
+        .attr("cx", function (d) { return x(d.apg); })
+        .attr("cy", function (d) { return y(d.name); })
         .attr("r", "7")
         .style("fill", "#69b3a2")
         .attr("stroke", "black")
@@ -102,13 +101,13 @@ function createArrays() {
 
     for (let i = 0; i < globalData.length; i++) {
         //Pushing csv column data into arrays
-        namesArr.push(globalData[i].NAME);
-        ppgArr.push(globalData[i].PPG);
-        rpgArr.push(globalData[i].RPG);
-        apgArr.push(globalData[i].APG);
-        spgArr.push(globalData[i].SPG);
-        bpgArr.push(globalData[i].BPG);
-        topgArr.push(globalData[i].TOPG);
+        // namesArr.push(globalData[i].NAME);
+        // ppgArr.push(globalData[i].PPG);
+        // rpgArr.push(globalData[i].RPG);
+        // apgArr.push(globalData[i].APG);
+        // spgArr.push(globalData[i].SPG);
+        // bpgArr.push(globalData[i].BPG);
+        // topgArr.push(globalData[i].TOPG);
 
         // Creating temp vars
         name = globalData[i].NAME;
