@@ -28,7 +28,7 @@ function callFunctionsOnClick() {
 
 function createVisual() {
     // set the dimensions and margins of the graph
-    var margin = { top: 10, right: 30, bottom: 40, left: 200 },
+    var margin = { top: 50, right: 30, bottom: 40, left: 200 },
         width = 460 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
@@ -45,6 +45,15 @@ function createVisual() {
     switch (userSelection) {
         // Case
         case "PointsPerGame":
+            // Add Title
+            svg.append("text")
+                .attr("x", (width / 2))
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
+                .text("Points Per Game");
+
             // Add X axis
             var x = d3.scaleLinear()
                 // Range
@@ -70,7 +79,7 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("line")
-                .attr("x1", function (d) { return x(d.ppg); })
+                .attr("x1", x(0))
                 .attr("x2", x(0))
                 .attr("y1", function (d) { return y(d.name); })
                 .attr("y2", function (d) { return y(d.name); })
@@ -81,16 +90,36 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("circle")
-                .attr("cx", function (d) { return x(d.ppg); })
+                .attr("cx", x(0))
                 .attr("cy", function (d) { return y(d.name); })
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+
+            // Animation
+            svg.selectAll("line")
+                .transition()
+                .duration(2000)
+                .attr("x1", function (d) { return x(d.ppg); })
+
+            svg.selectAll("circle")
+                .transition()
+                .duration(2000)
+                .attr("cx", function (d) { return x(d.ppg); })
 
             break;
 
         // Case
         case "ReboundsPerGame":
+            // Add Title
+            svg.append("text")
+                .attr("x", (width / 2))
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
+                .text("Rebounds Per Game");
+
             // Add X axis
             var x = d3.scaleLinear()
                 // Range
@@ -116,7 +145,7 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("line")
-                .attr("x1", function (d) { return x(d.rpg); })
+                .attr("x1", x(0))
                 .attr("x2", x(0))
                 .attr("y1", function (d) { return y(d.name); })
                 .attr("y2", function (d) { return y(d.name); })
@@ -127,16 +156,36 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("circle")
-                .attr("cx", function (d) { return x(d.rpg); })
+                .attr("cx", x(0))
                 .attr("cy", function (d) { return y(d.name); })
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+
+            // Animation
+            svg.selectAll("line")
+                .transition()
+                .duration(2000)
+                .attr("x1", function (d) { return x(d.rpg); })
+
+            svg.selectAll("circle")
+                .transition()
+                .duration(2000)
+                .attr("cx", function (d) { return x(d.rpg); })
 
             break;
 
         // Case
         case "AssistsPerGame":
+            // Add Title
+            svg.append("text")
+                .attr("x", (width / 2))
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
+                .text("Assists Per Game");
+
             // Add X axis
             var x = d3.scaleLinear()
                 // Range
@@ -162,7 +211,7 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("line")
-                .attr("x1", function (d) { return x(d.apg); })
+                .attr("x1", x(0))
                 .attr("x2", x(0))
                 .attr("y1", function (d) { return y(d.name); })
                 .attr("y2", function (d) { return y(d.name); })
@@ -173,16 +222,36 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("circle")
-                .attr("cx", function (d) { return x(d.apg); })
+                .attr("cx", x(0))
                 .attr("cy", function (d) { return y(d.name); })
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
 
+            // Animation
+            svg.selectAll("line")
+                .transition()
+                .duration(2000)
+                .attr("x1", function (d) { return x(d.apg); })
+
+            svg.selectAll("circle")
+                .transition()
+                .duration(2000)
+                .attr("cx", function (d) { return x(d.apg); })
+
             break;
-        
+
         // Case
         case "StealsPerGame":
+            // Add Title
+            svg.append("text")
+                .attr("x", (width / 2))
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
+                .text("Steals Per Game");
+
             // Add X axis
             var x = d3.scaleLinear()
                 // Range
@@ -208,7 +277,7 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("line")
-                .attr("x1", function (d) { return x(d.spg); })
+                .attr("x1", x(0))
                 .attr("x2", x(0))
                 .attr("y1", function (d) { return y(d.name); })
                 .attr("y2", function (d) { return y(d.name); })
@@ -219,16 +288,35 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("circle")
-                .attr("cx", function (d) { return x(d.spg); })
+                .attr("cx", x(0))
                 .attr("cy", function (d) { return y(d.name); })
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+
+            // Animation
+            svg.selectAll("line")
+                .transition()
+                .duration(2000)
+                .attr("x1", function (d) { return x(d.spg); })
+
+            svg.selectAll("circle")
+                .transition()
+                .duration(2000)
+                .attr("cx", function (d) { return x(d.spg); })
 
             break;
 
         // Case
         case "BlocksPerGame":
+            // Add Title
+            svg.append("text")
+                .attr("x", (width / 2))
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
+                .text("Blocks Per Game");
             // Add X axis
             var x = d3.scaleLinear()
                 // Range
@@ -254,7 +342,7 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("line")
-                .attr("x1", function (d) { return x(d.bpg); })
+                .attr("x1", x(0))
                 .attr("x2", x(0))
                 .attr("y1", function (d) { return y(d.name); })
                 .attr("y2", function (d) { return y(d.name); })
@@ -265,16 +353,36 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("circle")
-                .attr("cx", function (d) { return x(d.bpg); })
+                .attr("cx", x(0))
                 .attr("cy", function (d) { return y(d.name); })
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+
+            // Animation
+            svg.selectAll("line")
+                .transition()
+                .duration(2000)
+                .attr("x1", function (d) { return x(d.bpg); })
+
+            svg.selectAll("circle")
+                .transition()
+                .duration(2000)
+                .attr("cx", function (d) { return x(d.bpg); })
 
             break;
-        
+
         // Case
         case "TurnoversPerGame":
+            // Add Title
+            svg.append("text")
+                .attr("x", (width / 2))
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
+                .text("Turnovers Per Game");
+
             // Add X axis
             var x = d3.scaleLinear()
                 // Range
@@ -300,7 +408,7 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("line")
-                .attr("x1", function (d) { return x(d.topg); })
+                .attr("x1", x(0))
                 .attr("x2", x(0))
                 .attr("y1", function (d) { return y(d.name); })
                 .attr("y2", function (d) { return y(d.name); })
@@ -311,11 +419,22 @@ function createVisual() {
                 .data(dataArrTopTen)
                 .enter()
                 .append("circle")
-                .attr("cx", function (d) { return x(d.topg); })
+                .attr("cx", x(0))
                 .attr("cy", function (d) { return y(d.name); })
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+
+            // Animation
+            svg.selectAll("line")
+                .transition()
+                .duration(2000)
+                .attr("x1", function (d) { return x(d.topg); })
+
+            svg.selectAll("circle")
+                .transition()
+                .duration(2000)
+                .attr("cx", function (d) { return x(d.topg); })
     }
 
 }
@@ -388,8 +507,17 @@ function sortDataArray() {
 
 }
 
-function setTopTenDataArray(){
-    for(let i = 0; i <= 10; i++){
+function setTopTenDataArray() {
+    for (let i = 0; i <= 10; i++) {
         dataArrTopTen[i] = dataArr[i];
     }
 }
+
+
+
+
+
+
+
+
+
