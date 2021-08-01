@@ -17,10 +17,25 @@
 
 <body>
   <!-- Title -->
-  <div>Test in HTML file data being read and console logging as object</div>
+  <div>NBA Data Top 10 Players Visuals</div>
+
+
+  <!-- DropDown -->
+  <form >
+    <label for="stats">Sort By:</label>
+    <select name="stats" id="stats">
+      <option value="PointsPerGame">Points Per Game</option>
+      <option value="ReboundsPerGame">Rebounds Per Game</option>
+      <option value="AssistsPerGame">Assists Per Game</option>
+      <option value="StealsPerGame">Steals Per Game</option>
+      <option value="BlocksPerGame">Blocks Per Game</option>
+      <option value="TurnoversPerGame">Turnovers Per Game</option>
+    </select>
+    <br><br>
+    <div><button type="button" onclick = "createVisual()">Update Chart</button> </div>
+  </form>
 
   <!-- Button -->
-  <div><button type="button" onclick = "printData()">Print</button> </div>
 
   <!-- Chart -->
   <div id = "chart"></div>
