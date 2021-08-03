@@ -1,0 +1,7 @@
+body{
+    background-color: red;
+}
+
+.selections:hover {
+    background-color: gray;
+  }

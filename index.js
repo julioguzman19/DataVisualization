@@ -2,10 +2,12 @@
 let globalData = [];
 let dataArr = [];
 let dataArrTopTen = [];
-let userSelection;
 
 // Initializing iterations for window on load
 let i = 0;
+
+// Initializing User Selection
+let userSelection;
 
 window.onload = async function () {
     d3.csv("https://raw.githubusercontent.com/julioguzman19/DataVisualization/main/stats.csv", function (data) {
@@ -19,7 +21,41 @@ window.onload = async function () {
     });
 }
 
-function callFunctionsOnClick() {
+// Functions to run functions on hover
+function setUserSelectionOnHoverPoints(){
+    userSelection = "PointsPerGame";
+    callFunctions();
+}
+
+function setUserSelectionOnHoverRebounds(){
+    userSelection = "ReboundsPerGame";
+    callFunctions();
+}
+
+function setUserSelectionOnHoverAssists(){
+    userSelection = "AssistsPerGame";
+    callFunctions();
+}
+
+function setUserSelectionOnHoverSteals(){
+    userSelection = "StealsPerGame";
+    callFunctions();
+}
+
+function setUserSelectionOnHoverBlocks(){
+    userSelection = "BlocksPerGame";
+    callFunctions();
+}
+
+function setUserSelectionOnHoverTurnovers(){
+    userSelection = "TurnoversPerGame";
+    callFunctions();
+}
+
+
+
+// Call Functions 
+function callFunctions(){
     createDataArray();
     sortDataArray();
     setTopTenDataArray();
@@ -31,6 +67,9 @@ function createVisual() {
     var margin = { top: 50, right: 30, bottom: 40, left: 200 },
         width = 460 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
+
+    // Clear Chart div
+    document.getElementById("chart").innerHTML = "";
 
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
@@ -463,7 +502,7 @@ function createDataArray() {
 
 function sortDataArray() {
     // Get user selection
-    userSelection = document.getElementById("stats").value;
+    //userSelection = document.getElementById("stats").value;
 
     // Sort based on userSelection
     switch (userSelection) {

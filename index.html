@@ -18,16 +18,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body class = "bg-dark">
     <!-- Page Container -->
-    <div>
+    <div> 
         <!-- Title -->
-        <div class="text-center font-weight-bold text-dark h1">NBA Data Top 10 Players Visuals</div>
+        <div class="text-center font-weight-bold  text-white h1">NBA 2020-2021 Season Data</div>
+        <div class="text-center font-weight-bold text-white h1">Top 10 Players Visuals</div>
         <!-- / Title -->
 
         <!-- DropDown -->
-        <div class="text-center mt-5">
-            <form> 
+
+        <!-- <div class="text-center mt-5">
+            <form>
                 <label for="stats">Sort By:</label>
                 <select name="stats" id="stats">
                     <option value="PointsPerGame">Points Per Game</option>
@@ -38,18 +40,39 @@
                     <option value="TurnoversPerGame">Turnovers Per Game</option>
                 </select>
                 <br><br>
-                <div><button type="button" onclick="callFunctionsOnClick()">Add Chart</button> </div>
+                <div><button type="button" onclick="callFunctions()">Add Chart</button> </div>
             </form>
-        </div>
+        </div> -->
         <!-- / DropDown -->
 
-        <!-- Chart -->
-        <div id="chart"></div>
-        <!-- / Chart -->
+        <!-- Body Container-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class = "h1 text-white mb-3"> Hover Me!!!</div>
+                <div class="col border border-dark text-white">
+                    <div class = "mb-3 border selections " onmouseover="setUserSelectionOnHoverPoints()">Points Per Game</div>
+                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverRebounds()">Rebounds Per Game</div>
+                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverAssists()">Assists Per Game</div>
+                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverSteals()">Steals Per Game</div>
+                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverBlocks()">Blocks Per Game</div>
+                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverTurnovers()">Turnovers Per Game</div>
+                </div>
+                <div class="col">
+                    <!-- Chart -->
+                    <div class="bg-light" id="chart"></div>
+                    <!-- / Chart -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Body Container-->
 
-        <!-- Javascript file - bottom allows document to load first -->
-        <script src="index.js"></script>
-        <!-- / Javascript file  -->
+
+
+
+    <!-- Javascript file - bottom allows document to load first -->
+    <script src="index.js"></script>
+    <!-- / Javascript file  -->
 
     </div>
     <!-- / Page Container -->
