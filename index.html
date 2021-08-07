@@ -26,36 +26,17 @@
         <div class="text-center font-weight-bold text-white h1">Top 10 Players Visuals</div>
         <!-- / Title -->
 
-        <!-- DropDown -->
-
-        <!-- <div class="text-center mt-5">
-            <form>
-                <label for="stats">Sort By:</label>
-                <select name="stats" id="stats">
-                    <option value="PointsPerGame">Points Per Game</option>
-                    <option value="ReboundsPerGame">Rebounds Per Game</option>
-                    <option value="AssistsPerGame">Assists Per Game</option>
-                    <option value="StealsPerGame">Steals Per Game</option>
-                    <option value="BlocksPerGame">Blocks Per Game</option>
-                    <option value="TurnoversPerGame">Turnovers Per Game</option>
-                </select>
-                <br><br>
-                <div><button type="button" onclick="callFunctions()">Add Chart</button> </div>
-            </form>
-        </div> -->
-        <!-- / DropDown -->
-
         <!-- Body Container-->
         <div class="container mt-5">
             <div class="row">
-                <div class = "h1 text-white mb-3"> Hover Me!!!</div>
+                <div class = "h1 text-white mb-3"> Click to see Chart!!!</div>
                 <div class="col border border-dark text-white">
-                    <div class = "mb-3 border selections " onmouseover="setUserSelectionOnHoverPoints()">Points Per Game</div>
-                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverRebounds()">Rebounds Per Game</div>
-                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverAssists()">Assists Per Game</div>
-                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverSteals()">Steals Per Game</div>
-                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverBlocks()">Blocks Per Game</div>
-                    <div class = "mb-3 border selections" onmouseover="setUserSelectionOnHoverTurnovers()">Turnovers Per Game</div>
+                    <div class = "mb-3 border selections " onclick="setUserSelectionOnHoverPoints()">Points Per Game</div>
+                    <div class = "mb-3 border selections" onclick="setUserSelectionOnHoverRebounds()">Rebounds Per Game</div>
+                    <div class = "mb-3 border selections" onclick="setUserSelectionOnHoverAssists()">Assists Per Game</div>
+                    <div class = "mb-3 border selections" onclick="setUserSelectionOnHoverSteals()">Steals Per Game</div>
+                    <div class = "mb-3 border selections" onclick="setUserSelectionOnHoverBlocks()">Blocks Per Game</div>
+                    <div class = "mb-3 border selections" onclick="setUserSelectionOnHoverTurnovers()">Turnovers Per Game</div>
                 </div>
                 <div class="col">
                     <!-- Chart -->

@@ -62,6 +62,9 @@ function callFunctions(){
     createVisual();
 }
 
+
+
+
 function createVisual() {
     // set the dimensions and margins of the graph
     var margin = { top: 50, right: 30, bottom: 40, left: 200 },
@@ -71,6 +74,40 @@ function createVisual() {
     // Clear Chart div
     document.getElementById("chart").innerHTML = "";
 
+      // create a tooltip
+      var tooltip = d3.select("#chart")
+      .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("background-color", "yellow")
+        .style("border-radius", "5px")
+        .style("padding", "10px")
+        .style("color", "red")
+
+ // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
+ var showTooltip = function showTooltip(event,d) {
+     
+    tooltip
+      .transition()
+      .duration(200)
+    tooltip
+      .style("opacity", 1)
+      .html(d.ppg)
+       .style("left", (d.pageX + 5) + "px")
+       .style("top", (d.pageY)+ "px")
+  }
+  var moveTooltip = function(d) {
+    tooltip
+      .style("left", (d.pageX + 5)  + "px")
+      .style("top", (d.pageY)+ "px")
+  }
+  var hideTooltip = function(d) {
+    tooltip
+      .transition()
+      .duration(200)
+      .style("opacity", 0)
+  }
+
     // append the svg object to the body of the page
     var svg = d3.select("#chart")
         .append("svg")
@@ -78,7 +115,10 @@ function createVisual() {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+            "translate(" + margin.left + "," + margin.top + ")")
+          
+            
+
 
     // Plot based on userSelection
     switch (userSelection) {
@@ -92,6 +132,7 @@ function createVisual() {
                 .style("font-size", "16px")
                 .style("text-decoration", "underline")
                 .text("Points Per Game");
+                 
 
             // Add X axis
             var x = d3.scaleLinear()
@@ -103,7 +144,9 @@ function createVisual() {
                 .call(d3.axisBottom(x))
                 .selectAll("text")
                 .attr("transform", "translate(-10,0)rotate(-45)")
-                .style("text-anchor", "end");
+                .style("text-anchor", "end")
+              
+                
 
             // Y axis
             var y = d3.scaleBand()
@@ -134,6 +177,20 @@ function createVisual() {
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+                .on("mouseover", function showTooltip(event,d) {
+     
+                    tooltip
+                      .transition()
+                      .duration(200)
+                    tooltip
+                      .style("opacity", 1)
+                      .html(d.ppg)
+                       .style("left", (d.pageX + 5) + "px")
+                       .style("top", (d.pageY)+ "px")
+                  } )
+                .on("mousemove", moveTooltip )
+                .on("mouseout", hideTooltip )
+                
 
             // Animation
             svg.selectAll("line")
@@ -145,6 +202,8 @@ function createVisual() {
                 .transition()
                 .duration(2000)
                 .attr("cx", function (d) { return x(d.ppg); })
+                
+
 
             break;
 
@@ -200,6 +259,19 @@ function createVisual() {
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+                .on("mouseover", function showTooltip(event,d) {
+     
+                    tooltip
+                      .transition()
+                      .duration(200)
+                    tooltip
+                      .style("opacity", 1)
+                      .html(d.rpg)
+                       .style("left", (d.pageX + 5) + "px")
+                       .style("top", (d.pageY)+ "px")
+                  } )
+                .on("mousemove", moveTooltip )
+                .on("mouseout", hideTooltip )
 
             // Animation
             svg.selectAll("line")
@@ -266,6 +338,19 @@ function createVisual() {
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+                .on("mouseover", function showTooltip(event,d) {
+     
+                    tooltip
+                      .transition()
+                      .duration(200)
+                    tooltip
+                      .style("opacity", 1)
+                      .html(d.apg)
+                       .style("left", (d.pageX + 5) + "px")
+                       .style("top", (d.pageY)+ "px")
+                  } )
+                .on("mousemove", moveTooltip )
+                .on("mouseout", hideTooltip )
 
             // Animation
             svg.selectAll("line")
@@ -332,6 +417,19 @@ function createVisual() {
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+                .on("mouseover", function showTooltip(event,d) {
+     
+                    tooltip
+                      .transition()
+                      .duration(200)
+                    tooltip
+                      .style("opacity", 1)
+                      .html(d.spg)
+                       .style("left", (d.pageX + 5) + "px")
+                       .style("top", (d.pageY)+ "px")
+                  } )
+                .on("mousemove", moveTooltip )
+                .on("mouseout", hideTooltip )
 
             // Animation
             svg.selectAll("line")
@@ -397,6 +495,19 @@ function createVisual() {
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+                .on("mouseover", function showTooltip(event,d) {
+     
+                    tooltip
+                      .transition()
+                      .duration(200)
+                    tooltip
+                      .style("opacity", 1)
+                      .html(d.bpg)
+                       .style("left", (d.pageX + 5) + "px")
+                       .style("top", (d.pageY)+ "px")
+                  } )
+                .on("mousemove", moveTooltip )
+                .on("mouseout", hideTooltip )
 
             // Animation
             svg.selectAll("line")
@@ -463,6 +574,19 @@ function createVisual() {
                 .attr("r", "7")
                 .style("fill", "#FF7F7F")
                 .attr("stroke", "black")
+                .on("mouseover", function showTooltip(event,d) {
+     
+                    tooltip
+                      .transition()
+                      .duration(200)
+                    tooltip
+                      .style("opacity", 1)
+                      .html(d.topg)
+                       .style("left", (d.pageX + 5) + "px")
+                       .style("top", (d.pageY)+ "px")
+                  } )
+                .on("mousemove", moveTooltip )
+                .on("mouseout", hideTooltip )
 
             // Animation
             svg.selectAll("line")
